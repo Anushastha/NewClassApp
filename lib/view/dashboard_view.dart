@@ -31,7 +31,27 @@ class DashboardView extends StatelessWidget {
                     },
                     child: const Text('Random Number Generator'),
                   ),
-                )
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.pushNamed(context,
+                          AppRoute.containerRoute);
+                    },
+                    child: const Text('Container'),
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.pushNamed(context,
+                          AppRoute.imageRoute);
+                    },
+                    child: const Text('Image View'),
+                  ),
+                ),
               ],
             ),
           ),
