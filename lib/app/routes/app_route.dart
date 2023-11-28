@@ -1,5 +1,11 @@
 import 'package:newclassapp/view/container_view.dart';
+import 'package:newclassapp/view/expanded_flexible_view.dart';
+import 'package:newclassapp/view/grid_view_view.dart';
 import 'package:newclassapp/view/image_view.dart';
+import 'package:newclassapp/view/list_output_view.dart';
+import 'package:newclassapp/view/list_view.dart';
+import 'package:newclassapp/view/row_and_column_view.dart';
+import 'package:newclassapp/view/student_list_view.dart';
 
 import '../../view/arithmetic_view.dart';
 import '../../view/dashboard_view.dart';
@@ -16,6 +22,12 @@ class AppRoute {
   static const String ranNumRoute = '/randomNum';
   static const String containerRoute = '/containerRoute';
   static const String imageRoute = '/imageView';
+  static const String listRoute = '/list';
+  static const String studentListRoute = '/studentList';
+  static const String studentListAllRoute = '/listOutput';
+  static const String expandedRoute = '/expandedFlexible';
+  static const String rowAndColumnRoute = '/rowAndColum';
+  static const String gridRoute = '/grid';
 
   static getApplicationRoute() {
     return {
@@ -25,6 +37,12 @@ class AppRoute {
       ranNumRoute: (context) => const RandomNumber(),
       containerRoute: (context) => const ContainerView(),
       imageRoute: (context) => const ImageView(),
+      listRoute: (context) => const ListViews(),
+      studentListRoute: (context) => const StudentListView(),
+      studentListAllRoute: (context) => const ListOutputView(),
+      expandedRoute: (context) => const ExpandedFlexibleView(),
+      rowAndColumnRoute: (context) => const RowAndColumnView(),
+      gridRoute: (context) => const GridViewView(),
     };
   }
 }

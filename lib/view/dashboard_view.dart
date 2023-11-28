@@ -52,6 +52,16 @@ class DashboardView extends StatelessWidget {
                     child: const Text('Image View'),
                   ),
                 ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.pushNamed(context,
+                          AppRoute.listRoute);
+                    },
+                    child: const Text('List View'),
+                  ),
+                ),
               ],
             ),
           ),
