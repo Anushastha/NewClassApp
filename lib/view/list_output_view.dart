@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:newclassapp/app/common/display_student_view.dart';
 
+import '../app/common/display_student_view.dart';
 import '../model/student.dart';
 
-class ListOutputView extends StatefulWidget {
-  const ListOutputView({super.key});
+
+class StudentOutputView extends StatefulWidget {
+  const StudentOutputView({super.key});
 
   @override
-  State<ListOutputView> createState() => _ListOutputViewState();
+  State<StudentOutputView> createState() => _StudentOutputViewState();
 }
 
-class _ListOutputViewState extends State<ListOutputView> {
+class _StudentOutputViewState extends State<StudentOutputView> {
   List<Student> lstStudents = [];
-
   @override
   void didChangeDependencies() {
     lstStudents = ModalRoute.of(context)!.settings.arguments as List<Student>;
@@ -23,13 +23,12 @@ class _ListOutputViewState extends State<ListOutputView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student List View'),
-        centerTitle: true,
+        title: const Text("Student Listview"),
       ),
-      body: Expanded(
-        child: DisplayStudentView(
-                lstStudents: lstStudents,
-              ),
+      body: lstStudents.isEmpty
+          ? const Center(child: Text('Data chaina'))
+          : DisplayStudentView(
+        lstStudents: lstStudents,
       ),
     );
   }

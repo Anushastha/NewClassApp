@@ -1,10 +1,14 @@
 import 'package:newclassapp/view/container_view.dart';
+import 'package:newclassapp/view/dashboard_nav_view.dart';
+import 'package:newclassapp/view/date_time_view.dart';
 import 'package:newclassapp/view/expanded_flexible_view.dart';
 import 'package:newclassapp/view/grid_view_view.dart';
 import 'package:newclassapp/view/image_view.dart';
 import 'package:newclassapp/view/list_output_view.dart';
 import 'package:newclassapp/view/list_view.dart';
 import 'package:newclassapp/view/row_and_column_view.dart';
+import 'package:newclassapp/view/splash_view.dart';
+import 'package:newclassapp/view/stacks_view.dart';
 import 'package:newclassapp/view/student_list_view.dart';
 
 import '../../view/arithmetic_view.dart';
@@ -28,6 +32,10 @@ class AppRoute {
   static const String expandedRoute = '/expandedFlexible';
   static const String rowAndColumnRoute = '/rowAndColum';
   static const String gridRoute = '/grid';
+  static const String stackRoute = '/stack';
+  static const String dashboardNavRoute = '/dashboardNav';
+  static const String splashRoute = '/splash';
+  static const String dateTimeRoute = '/dateTime';
 
   static getApplicationRoute() {
     return {
@@ -39,10 +47,14 @@ class AppRoute {
       imageRoute: (context) => const ImageView(),
       listRoute: (context) => const ListViews(),
       studentListRoute: (context) => const StudentListView(),
-      studentListAllRoute: (context) => const ListOutputView(),
+      studentListAllRoute: (context) => const StudentOutputView(),
       expandedRoute: (context) => const ExpandedFlexibleView(),
       rowAndColumnRoute: (context) => const RowAndColumnView(),
       gridRoute: (context) => const GridViewView(),
+      stackRoute: (context) => const StacksView(),
+      dashboardNavRoute: (context) => const DashboardNavView(),
+      splashRoute: (context) => const SplashScreen(),
+      dateTimeRoute: (context) => const DateTimeView(),
     };
   }
 }

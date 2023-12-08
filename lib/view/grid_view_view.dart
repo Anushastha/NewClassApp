@@ -13,8 +13,8 @@ class GridViewView extends StatelessWidget {
       ),
       body: GridView.count(
         padding: const EdgeInsets.all(10),
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
+        crossAxisSpacing: 5,
+        mainAxisSpacing: 5,
         crossAxisCount: 3,
         children: [
           for (int i = 1; i <= 10; i++) ...{

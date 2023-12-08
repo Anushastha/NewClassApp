@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newclassapp/app/common/display_student_view.dart';
-import 'package:newclassapp/model/student.dart';
 
 import '../app/routes/app_route.dart';
+import '../model/student.dart';
+
 
 class StudentListView extends StatefulWidget {
   const StudentListView({super.key});
@@ -44,6 +44,7 @@ class _StudentListViewState extends State<StudentListView> {
           child: Form(
             key: _formKey,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   'Student List View',
@@ -55,13 +56,13 @@ class _StudentListViewState extends State<StudentListView> {
                   decoration: const InputDecoration(
                     labelText: 'First Name',
                     floatingLabelStyle: TextStyle(
-                      color: Colors.purple,
+                      color: Colors.blueGrey,
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.blueGrey),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.blueGrey),
                     ),
                   ),
                 ),
@@ -71,13 +72,13 @@ class _StudentListViewState extends State<StudentListView> {
                   decoration: const InputDecoration(
                     labelText: 'Last Name',
                     floatingLabelStyle: TextStyle(
-                      color: Colors.purple,
+                      color: Colors.blueGrey,
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.blueGrey),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.blueGrey),
                     ),
                   ),
                 ),
@@ -95,13 +96,13 @@ class _StudentListViewState extends State<StudentListView> {
                     labelText: 'Select City',
                     border: OutlineInputBorder(),
                     floatingLabelStyle: TextStyle(
-                      color: Colors.purple,
+                      color: Colors.blueGrey,
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.blueGrey),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.purple),
+                      borderSide: BorderSide(color: Colors.blueGrey),
                     ),
                   ),
                   validator: (value) {
@@ -129,7 +130,7 @@ class _StudentListViewState extends State<StudentListView> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.purple),
+                      MaterialStateProperty.all<Color>(Colors.blueGrey),
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.symmetric(
                             horizontal: 40, vertical: 15),
@@ -149,15 +150,22 @@ class _StudentListViewState extends State<StudentListView> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        AppRoute.studentListAllRoute,
-                        arguments: lstStudents,
-                      );
+                      Navigator.pushNamed(context, AppRoute.studentListAllRoute,
+                          arguments: lstStudents);
+                      // if (_formKey.currentState!.validate() && city != null) {
+                      //   Student student = Student(
+                      //     fname: firstNameController.text,
+                      //     lname: lastNameController.text,
+                      //     city: city!,
+                      //   );
+                      //   setState(() {
+                      //     lstStudents.add(student);
+                      //   });
+                      // }
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.lightBlueAccent),
+                          const Color.fromARGB(255, 178, 192, 198)),
                       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 15),
@@ -172,8 +180,55 @@ class _StudentListViewState extends State<StudentListView> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                Expanded(child: DisplayStudentView(lstStudents: lstStudents)),
+                Expanded(
+                    child: lstStudents.isNotEmpty
+                        ? ListView.builder(
+                      padding: const EdgeInsets.all(10),
+                      itemCount: lstStudents.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return SizedBox(
+                          height: 200,
+                          width: double.infinity,
+                          child: Card(
+                            color: Colors.blueGrey,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Center(
+                              child: Text(
+                                  ' ${lstStudents[index].fname} ${lstStudents[index].lname}'),
+                            ),
+                            // subtitle: Text(lstStudents[index].city),
+                          ),
+                        );
+                        // return ListTile(
+                        //   leading: const Icon(Icons.person_rounded),
+                        //   title: Text(
+                        //       ' ${lstStudents[index].fname} ${lstStudents[index].lname}'),
+                        //   subtitle: Text(lstStudents[index].city),
+                        //   trailing: Wrap(
+                        //     children: [
+                        //       IconButton(
+                        //         icon: const Icon(Icons.edit),
+                        //         onPressed: () {
+                        //           setState(() {
+                        //             // lstStudents.removeAt(index);
+                        //           });
+                        //         },
+                        //       ),
+                        //       IconButton(
+                        //         icon: const Icon(Icons.delete),
+                        //         onPressed: () {
+                        //           setState(() {
+                        //             lstStudents.removeAt(index);
+                        //           });
+                        //         },
+                        //       ),
+                        //     ],
+                        //   ),
+                        // );
+                      },
+                    )
+                        : const Text('No data')),
               ],
             ),
           ),
@@ -181,11 +236,7 @@ class _StudentListViewState extends State<StudentListView> {
       ),
     );
   }
-
-  @override
-  void dispose() {
-    firstNameController.dispose();
-    lastNameController.dispose();
-    super.dispose();
-  }
 }
+
+
+//card ma height dina mildaina so wrap with sizedbox garne
